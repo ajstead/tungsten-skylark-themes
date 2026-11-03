@@ -1,0 +1,80 @@
+# TungstenSkylark — Skylark (brand base), DARK terminal palette.
+# Source of truth: TungstenSkylark brand ts-brand.css (read-only reference).
+# Roles: bg #232529 · surface #3C3F44 · text #F5F2EC · accent #FFB24D · accent-soft #FFC968
+
+# GUI accents for the Desktop app (ignored by CLI/TUI)
+customCSS = """
+/* TungstenSkylark — Skylark dark */
+::selection { background: rgba(255, 201, 104, 0.32); }
+::-webkit-scrollbar-thumb { background: #3C3F44; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #FFB24D; }
+::-webkit-scrollbar-track { background: transparent; }
+"""
+
+tool_prefix = "❘"
+
+banner_logo = """
+[bold #FFB24D]TUNGSTEN[/] [bold #FFC968]SKYLARK[/]
+"""
+
+[backgrounds]
+terminal = "#232529"
+status = "#1B1D20"
+completion = "#2B2D31"
+
+[colors]
+banner_border = "#55524B"
+banner_title = "#FFB24D"
+banner_accent = "#FFC968"
+banner_dim = "#A8A49C"
+banner_text = "#F5F2EC"
+ui_accent = "#FFB24D"
+ui_label = "#FFC968"
+ui_ok = "#76BE51"
+ui_error = "#E86577"
+ui_warn = "#FFA42B"
+prompt = "#F5F2EC"
+input_rule = "#55524B"
+response_border = "#FFC968"
+session_label = "#FFC968"
+session_border = "#5A5B60"
+status_bar_bg = "#1B1D20"
+voice_status_bg = "#1B1D20"
+selection_bg = "#4A4230"
+completion_menu_bg = "#2B2D31"
+completion_menu_current_bg = "#46413A"
+completion_menu_meta_bg = "#2B2D31"
+completion_menu_meta_current_bg = "#46413A"
+
+[spinner]
+waiting_faces = ["(♪)", "(♫)", "(✧)"]
+thinking_faces = ["(♪)", "(♬)", "(✦)"]
+thinking_verbs = [
+  "taking flight",
+  "riding the thermal",
+  "tuning the dawn chorus",
+  "scouting the fells",
+  "carrying the tune",
+]
+wings = [["⟪♪", "♪⟫"], ["⟪✦", "✦⟫"]]
+
+[branding]
+agent_name = "TungstenSkylark"
+welcome = "Welcome to TungstenSkylark — type your message or /help for commands."
+goodbye = "Fly safe! ♪"
+response_label = "♪ Skylark"
+prompt_symbol = "❯"
+help_header = "(♪) Available Commands"
+
+[contrast]
+banner_text = ["banner_text", "terminal", "text"]
+banner_title = ["banner_title", "terminal", "accent"]
+banner_accent = ["banner_accent", "terminal", "accent"]
+banner_dim = ["banner_dim", "terminal", "text"]
+ui_accent = ["ui_accent", "terminal", "accent"]
+ui_label = ["ui_label", "terminal", "accent"]
+ui_ok = ["ui_ok", "terminal", "text"]
+ui_error = ["ui_error", "terminal", "text"]
+ui_warn = ["ui_warn", "terminal", "text"]
+prompt = ["prompt", "terminal", "text"]
+session_label = ["session_label", "terminal", "accent"]
