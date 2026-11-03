@@ -78,8 +78,10 @@ skin names.
 |---|---|---|
 | banner_text #3C3F44 | 9.46:1 | 4.5 |
 | banner_title #9A5300 | 5.20:1 | 4.5 |
-| banner_accent #B26300 | 4.02:1 | 3.0 |
+| banner_accent #B26300 | 4.02:1 | 3.0 (large/decorative only) |
 | banner_dim #6B655B | 5.17:1 | 4.5 |
+| ui_accent #9A5300 | 5.20:1 | 3.0 |
+| ui_label #9A5300 | 5.20:1 | 4.5 |
 | ui_ok #3F7226 | 5.15:1 | 4.5 |
 | ui_error #B23244 | 5.48:1 | 4.5 |
 | ui_warn #9A5300 | 5.20:1 | 4.5 |
@@ -105,7 +107,10 @@ All 22 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
 - Amber discipline: ~10% accent per screen; skins keep amber to titles,
   labels, borders and spinners.
 - Terminal amber for light mode is darkened from brand `#FFA42B`/`#FFC968`
-  to `#9A5300`/`#B26300` — the raw brand ambers fail AA as text on cream;
-  `--ts-accent-text` tokens carry the same discipline for web apps.
+  to `#9A5300` — **sanctioned by brand sign-off 2026-11** as THE
+  `--ts-accent-text` value; `#B26300` is large-text-only (4.02:1); brand
+  ambers stay decorative. Dark mode keeps `#FFB24D` (8.57:1).
 - Light/dark classification: `tungsten-skylark` = dark, `tungsten-skylark-light`
   = light (also stated in each theme's `meta.json`).
+- Fleet adoption: ColourPicker / Timer / MarkdownEditor should consume
+  `exports/ts-tokens.css` (per the same sign-off; YadaWallet precedent).

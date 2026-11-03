@@ -1,7 +1,9 @@
 # TungstenSkylark — Skylark (brand base), LIGHT terminal palette.
-# Source of truth: TungstenSkylark brand ts-brand.css (read-only reference).
-# Roles: bg #F5F2EC · surface #FFF9F0 · text #3C3F44 · accent #FFA42B (decorative) ·
-# Text-bearing amber darkened to #9A5300 / #B26300 to hold WCAG AA on cream backgrounds.
+# Source of truth: TungstenSkylark brand ts-brand.css (read-only reference)
+# + brand sign-off ruling (via @ai relay, 2026-11): #9A5300 is THE sanctioned
+# text-bearing amber in light mode (5.20:1 AA); #B26300 (4.02:1) is reserved
+# for large text and decorative borders only; brand ambers stay decorative.
+# Roles: bg #F5F2EC · surface #FFF9F0 · text #3C3F44 · accent #FFA42B (decorative)
 
 # GUI accents for the Desktop app (ignored by CLI/TUI)
 customCSS = """
@@ -29,7 +31,7 @@ banner_title = "#9A5300"
 banner_accent = "#B26300"
 banner_dim = "#6B655B"
 banner_text = "#3C3F44"
-ui_accent = "#B26300"
+ui_accent = "#9A5300"
 ui_label = "#9A5300"
 ui_ok = "#3F7226"
 ui_error = "#B23244"

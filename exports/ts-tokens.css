@@ -145,12 +145,13 @@ html[data-appearance='dark'],
     }
 }
 
-/* ---------- WCAG-safe text accents ----------
-   Brand accent-l/d can fail AA as *text* on bg; per-theme alternates
-   computed by tools/build-tokens-css.py hold >=4.5:1 (dark mode usually
-   keeps the brand accent unchanged). */
+/* ---------- --ts-accent-text: derived role for text-bearing amber -----
+   Brand sign-off 2026-11: explicit sanctioned values used when declared
+   in tokens.json; otherwise computed AA-safe blends. NEVER use --ts-accent
+   for body-size text. Large text (>=24px / 18.7px bold) may use --ts-accent
+   or #B26300-class values where they hold >=3:1. */
 [data-theme='skylark'] {
-    --ts-accent-text-l: #99621A;   /* on #F5F2EC: 4.57:1 */
+    --ts-accent-text-l: #9A5300;   /* on #F5F2EC: 5.20:1 */
     --ts-accent-text-d: #FFB24D;   /* on #232529: 8.57:1 */
 }
 [data-theme='ember'] {

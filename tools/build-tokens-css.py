@@ -149,22 +149,25 @@ def main() -> int:
 
     # WCAG-safe text accents per theme
     lines += [
-        "/* ---------- WCAG-safe text accents ----------",
-        "   Brand accent-l/d can fail AA as *text* on bg; per-theme alternates",
-        "   computed by tools/build-tokens-css.py hold >=4.5:1 (dark mode usually",
-        "   keeps the brand accent unchanged). */",
+        "/* ---------- --ts-accent-text: derived role for text-bearing amber -----",
+        "   Brand sign-off 2026-11: explicit sanctioned values used when declared",
+        "   in tokens.json; otherwise computed AA-safe blends. NEVER use --ts-accent",
+        "   for body-size text. Large text (>=24px / 18.7px bold) may use --ts-accent",
+        "   or #B26300-class values where they hold >=3:1. */",
     ]
     for th in tokens["themes"]:
+        sanctioned = th.get("accent_text") or {}
         dark_ok = ratio(th["dark"]["accent"], th["dark"]["bg"]) >= TEXT_MIN
-        light_safe = wcag_safe_text_accent(th["light"])
-        if light_safe is None:
+        dark_val = sanctioned.get("dark") or (
+            th["dark"]["accent"] if dark_ok else wcag_safe_text_accent(th["dark"]))
+        light_val = sanctioned.get("light") or wcag_safe_text_accent(th["light"])
+        if light_val is None or dark_val is None:
             print(f"ERROR: no AA-safe text accent derivable for theme "
-                  f"'{th['id']}' light mode", file=sys.stderr)
+                  f"'{th['id']}'", file=sys.stderr)
             return 1
-        d = th["dark"]["accent"] if dark_ok else wcag_safe_text_accent(th["dark"])
         lines.append(f"[data-theme='{th['id']}'] {{")
-        lines.append(f"    --ts-accent-text-l: {light_safe};   /* on {th['light']['bg']}: {ratio(light_safe, th['light']['bg']):.2f}:1 */")
-        lines.append(f"    --ts-accent-text-d: {d};   /* on {th['dark']['bg']}: {ratio(d, th['dark']['bg']):.2f}:1 */")
+        lines.append(f"    --ts-accent-text-l: {light_val};   /* on {th['light']['bg']}: {ratio(light_val, th['light']['bg']):.2f}:1 */")
+        lines.append(f"    --ts-accent-text-d: {dark_val};   /* on {th['dark']['bg']}: {ratio(dark_val, th['dark']['bg']):.2f}:1 */")
         lines.append("}")
     lines += [
         ":root { --ts-accent-text: var(--ts-accent-text-l); }",
