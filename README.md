@@ -4,9 +4,9 @@ Official TungstenSkylark brand themes for Hermes surfaces (CLI, TUI, Desktop)
 plus a portable token sheet other apps can consume directly.
 
 Source of truth for colours: the brand `ts-brand.css` / TS-Themes.md framework
-(nine themes × light/dark, five colour roles, ~10% amber discipline, Chakra
-Petch + Space Mono). Reference-only; nothing in this repo writes into the
-brand material.
+(nine themes × light/dark, six colour roles, ~10% accent discipline, Chakra
+Petch + Space Mono), expressed in the **W3C Design Tokens (DTCG) format**.
+Reference-only; nothing in this repo writes into the brand material.
 
 ## Skins
 
@@ -14,6 +14,7 @@ brand material.
 |---|---|---|
 | `tungsten-skylark` | dark | Skylark brand base — amber `#FFB24D` on tungsten `#232529`, text `#F5F2EC` |
 | `tungsten-skylark-light` | light | Skylark brand base for bright terminals — cream `#F5F2EC`, amber text darkened to `#9A5300`/`#B26300` to hold WCAG AA |
+| `tungsten-matrix` | dark | Special edition — the Matrix film's green falling code: phosphor green `#00FF41` on near-black `#060D08` |
 
 Apply (repaints every surface within ~a second):
 
@@ -45,14 +46,15 @@ skin names.
 
 ## Using the theme in OTHER apps
 
-- **`themes/tokens.json`** — machine-readable token set: nine themes × light/dark,
-  six roles (bg, surface, text, accent, accent_soft, ink), typography stacks,
-  8px spacing rhythm, and the brand's derived-colour recipes (text-soft,
-  line, glow). Import into design tools, code generators, or native apps.
+- **`themes/tokens.json`** — machine-readable token set in the **W3C Design
+  Tokens Community Group (DTCG) format** (`$value`/`$type` groups): ten themes
+  (nine brand + Tungsten Matrix) × light/dark, six roles + derived
+  `accentText`, typography stacks, 8px spacing rhythm, radius/content-max.
+  Consumable by Style Dictionary, Tokens Studio and any DTCG-aware tooling.
 - **`exports/ts-tokens.css`** — drop-in CSS custom properties for web/Electron
-  apps. Mirror of the brand mechanics: `data-theme` selects one of the nine
-  themes, `data-appearance` (or the OS preference) flips light/dark. Includes
-  `--ts-accent-text` — per-theme AA-safe accents for amber-as-text situations,
+  apps. Mirror of the brand mechanics: `data-theme` selects a theme,
+  `data-appearance` (or the OS preference) flips light/dark. Includes
+  `--ts-accent-text` — per-theme AA-safe accents for accent-as-text situations,
   computed by `tools/build-tokens-css.py`.
 - **Hermes skins** are themselves usable anywhere Hermes runs (CLI, TUI,
   Desktop, web dashboard) — the Desktop converts the palette automatically.
@@ -87,7 +89,20 @@ skin names.
 | ui_warn #9A5300 | 5.20:1 | 4.5 |
 | prompt #3C3F44 | 9.46:1 | 4.5 |
 
-All 22 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
+`tungsten-matrix` (dark, bg #060D08):
+
+| Pair | Ratio | Threshold |
+|---|---|---|
+| banner_text #CFF5D3 | 16.52:1 | 4.5 |
+| banner_title #00FF41 | 14.39:1 | 4.5 |
+| banner_accent #5CFF86 | 15.07:1 | 3.0 |
+| banner_dim #6FA07A | 6.54:1 | 4.5 |
+| ui_ok #3EE06C | 11.31:1 | 4.5 |
+| ui_error #FF5C7A | 6.61:1 | 4.5 |
+| ui_warn #E8C44A | 11.63:1 | 4.5 |
+| prompt #CFF5D3 | 16.52:1 | 4.5 |
+
+All 33 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
 
 ## Repo layout
 
@@ -114,3 +129,7 @@ All 22 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
   = light (also stated in each theme's `meta.json`).
 - Fleet adoption: ColourPicker / Timer / MarkdownEditor should consume
   `exports/ts-tokens.css` (per the same sign-off; YadaWallet precedent).
+- Tungsten Matrix is a film-homage special edition, dark-first. Its palette
+  (phosphor green `#00FF41`, near-black `#060D08`) is NOT part of the nine
+  brand themes — it travels in tokens.json under its own `matrix` theme id,
+  and both its accents pass AA as text on their backgrounds.

@@ -1,0 +1,68 @@
+name: tungsten-matrix
+description: Tungsten Matrix — the green falling code (special edition, dark)
+colors:
+  banner_border: '#1E3A26'
+  banner_title: '#00FF41'
+  banner_accent: '#5CFF86'
+  banner_dim: '#6FA07A'
+  banner_text: '#CFF5D3'
+  ui_accent: '#00FF41'
+  ui_label: '#5CFF86'
+  ui_ok: '#3EE06C'
+  ui_error: '#FF5C7A'
+  ui_warn: '#E8C44A'
+  prompt: '#CFF5D3'
+  input_rule: '#1E3A26'
+  response_border: '#00FF41'
+  session_label: '#5CFF86'
+  session_border: '#2A4A34'
+  status_bar_bg: '#0B140D'
+  voice_status_bg: '#0B140D'
+  selection_bg: '#0E3A1B'
+  completion_menu_bg: '#0E1A10'
+  completion_menu_current_bg: '#14301E'
+  completion_menu_meta_bg: '#0E1A10'
+  completion_menu_meta_current_bg: '#14301E'
+spinner:
+  waiting_faces:
+  - (0)
+  - (1)
+  - (0)
+  thinking_faces:
+  - (0)
+  - (1)
+  - '{0}'
+  thinking_verbs:
+  - decoding the rain
+  - tracing the cascade
+  - reading the construct
+  - following the stream
+  - compiling the fall
+  wings:
+  - - ⟪0
+    - 0⟫
+  - - ⟪1
+    - 1⟫
+branding:
+  agent_name: Tungsten Matrix
+  welcome: Wake up… Welcome to the Tungsten Matrix — type your message or /help for
+    commands.
+  goodbye: Free your mind. Follow the white rabbit. ♪
+  response_label: ▣ Matrix
+  prompt_symbol: ❯
+  help_header: (0) Available Commands
+tool_prefix: ❘
+banner_logo: '[bold #00FF41]TUNGSTEN[/] [bold #5CFF86]MATRIX[/]
+
+  '
+customCSS: '/* Tungsten Matrix — special edition */
+
+  ::selection { background: rgba(0, 255, 65, 0.25); }
+
+  ::-webkit-scrollbar-thumb { background: #1E3A26; border-radius: 6px; }
+
+  ::-webkit-scrollbar-thumb:hover { background: #00FF41; }
+
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  '
