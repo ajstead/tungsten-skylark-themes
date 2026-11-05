@@ -1,1 +1,6 @@
-{"skin": "tungsten-skylark", "label": "TungstenSkylark — Skylark (brand base, dark)", "classification": "dark"}
+{
+  "skin": "tungsten-skylark",
+  "label": "TungstenSkylark \u2014 Skylark (brand base, dark)",
+  "classification": "dual",
+  "modes": "dark+light"
+}

@@ -78,3 +78,49 @@ ui_error = ["ui_error", "terminal", "text"]
 ui_warn = ["ui_warn", "terminal", "text"]
 prompt = ["prompt", "terminal", "text"]
 session_label = ["session_label", "terminal", "accent"]
+
+# ── Light polarity overlay ────────────────────────────────────────────────
+# Ported from themes/tungsten-skylark-light (which stays published standalone).
+# On a dark-authored skin this is the palette the CLI/TUI pick on light
+# terminals and the Desktop maps to its light-mode slots.
+[light.backgrounds]
+terminal = "#F5F2EC"
+status = "#FFF9F0"
+completion = "#FBF7EF"
+
+[light.colors]
+banner_border = "#C9C2B4"
+banner_title = "#9A5300"
+banner_accent = "#B26300"
+banner_dim = "#6B655B"
+banner_text = "#3C3F44"
+ui_accent = "#9A5300"
+ui_label = "#9A5300"
+ui_ok = "#3F7226"
+ui_error = "#B23244"
+ui_warn = "#9A5300"
+prompt = "#3C3F44"
+input_rule = "#C9C2B4"
+response_border = "#B26300"
+session_label = "#9A5300"
+session_border = "#8B8682"
+status_bar_bg = "#FFF9F0"
+voice_status_bg = "#FFF9F0"
+selection_bg = "#FFC968"
+completion_menu_bg = "#FBF7EF"
+completion_menu_current_bg = "#FFE3B3"
+completion_menu_meta_bg = "#FBF7EF"
+completion_menu_meta_current_bg = "#FFE3B3"
+
+[light.contrast]
+banner_text = ["banner_text", "terminal", "text"]
+banner_title = ["banner_title", "terminal", "text"]
+banner_accent = ["banner_accent", "terminal", "accent"]
+banner_dim = ["banner_dim", "terminal", "text"]
+ui_accent = ["ui_accent", "terminal", "text"]
+ui_label = ["ui_label", "terminal", "text"]
+ui_ok = ["ui_ok", "terminal", "text"]
+ui_error = ["ui_error", "terminal", "text"]
+ui_warn = ["ui_warn", "terminal", "text"]
+prompt = ["prompt", "terminal", "text"]
+session_label = ["session_label", "terminal", "text"]

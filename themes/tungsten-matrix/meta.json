@@ -1,1 +1,6 @@
-{"skin": "tungsten-matrix", "label": "Tungsten Matrix — the green falling code (special edition, dark)", "classification": "dark"}
+{
+  "skin": "tungsten-matrix",
+  "label": "Tungsten Matrix \u2014 the green falling code (special edition, dark)",
+  "classification": "dual",
+  "modes": "dark+light"
+}

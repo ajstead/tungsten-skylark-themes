@@ -94,6 +94,11 @@ def load_theme(slug: str) -> dict:
         if key in data:
             doc[key] = data[key]
 
+    light = data.get("light") or {}
+    if isinstance(light, dict) and "colors" in light:
+        # [light] table: full second palette + its own audit set.
+        doc["light_colors"] = light["colors"]
+
     return {
         "slug": slug,
         "skin_name": skin_name,
@@ -102,30 +107,41 @@ def load_theme(slug: str) -> dict:
         "skin": doc,
         "contrast_pairs": data.get("contrast", {}),
         "bg": data.get("backgrounds", {}),
+        "light_pairs": (light.get("contrast") or {}) if isinstance(light, dict) else {},
+        "light_bg": (light.get("backgrounds") or {}) if isinstance(light, dict) else {},
     }
 
 
 def audit(theme: dict) -> list[str]:
-    """Return a list of human-readable contrast failures (empty = pass)."""
+    """Return a list of human-readable contrast failures (empty = pass).
+
+    Audits the base [contrast] pairs against [backgrounds], and — when the
+    theme carries a [light] polarity — the [light.contrast] pairs against
+    [light.backgrounds]. Both must clear AA before the build writes a skin.
+    """
     failures = []
-    pairs = theme.get("contrast_pairs", {})
-    bgs = theme.get("bg", {})
-    for key, val in pairs.items():
-        fg_key, bg_key, kind = val if isinstance(val, list) else (val[0], val[1], "text")
-        palette = theme["skin"]["colors"] if isinstance(theme["skin"], dict) else None
-        if palette is None:
-            continue  # hand-made skin: audit lives in its own README
-        fg, bg = palette.get(fg_key), bgs.get(bg_key) or palette.get(bg_key)
-        if fg is None or bg is None:
-            failures.append(f"  {key}: missing {fg_key}/{bg_key}")
-            continue
-        ratio = contrast_ratio(fg, bg)
-        threshold = ACCENT_MIN if kind == "accent" else TEXT_MIN
-        mark = "PASS" if ratio >= threshold else "FAIL"
-        print(f"  {mark}  {key:<28} {fg} on {bg}  {ratio:.2f}:1 "
-              f"(need {threshold}:1)")
-        if ratio < threshold:
-            failures.append(f"  {key}: {ratio:.2f}:1 < {threshold}:1")
+    sections = [("", theme.get("contrast_pairs", {}), theme.get("bg", {}))]
+    if theme.get("light_pairs"):
+        sections.append(("light ", theme["light_pairs"], theme["light_bg"]))
+    for prefix, pairs, bgs in sections:
+        for key, val in pairs.items():
+            fg_key, bg_key, kind = val if isinstance(val, list) else (val[0], val[1], "text")
+            palette = theme["skin"]["colors"] if isinstance(theme["skin"], dict) else None
+            if palette is None:
+                continue  # hand-made skin: audit lives in its own README
+            if prefix and "light_colors" in theme["skin"]:
+                palette = {**palette, **theme["skin"]["light_colors"]}
+            fg, bg = palette.get(fg_key), bgs.get(bg_key) or palette.get(bg_key)
+            if fg is None or bg is None:
+                failures.append(f"  {prefix}{key}: missing {fg_key}/{bg_key}")
+                continue
+            ratio = contrast_ratio(fg, bg)
+            threshold = ACCENT_MIN if kind == "accent" else TEXT_MIN
+            mark = "PASS" if ratio >= threshold else "FAIL"
+            print(f"  {mark}  {prefix}{key:<26} {fg} on {bg}  {ratio:.2f}:1 "
+                  f"(need {threshold}:1)")
+            if ratio < threshold:
+                failures.append(f"  {prefix}{key}: {ratio:.2f}:1 < {threshold}:1")
     return failures
 
 

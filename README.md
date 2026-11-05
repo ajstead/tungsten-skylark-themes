@@ -12,9 +12,9 @@ Reference-only; nothing in this repo writes into the brand material.
 
 | Skin | Classification | Description |
 |---|---|---|
-| `tungsten-skylark` | dark | Skylark brand base — amber `#FFB24D` on tungsten `#232529`, text `#F5F2EC` |
-| `tungsten-skylark-light` | light | Skylark brand base for bright terminals — cream `#F5F2EC`, amber text darkened to `#9A5300`/`#B26300` to hold WCAG AA |
-| `tungsten-matrix` | dark | Special edition — the Matrix film's green falling code: phosphor green `#00FF41` on near-black `#060D08` |
+| `tungsten-skylark` | dual (dark+light) | Skylark brand base — amber `#FFB24D` on tungsten `#232529`, text `#F5F2EC`; ships a `light_colors` overlay (cream `#F5F2EC`, amber `#9A5300`) |
+| `tungsten-skylark-light` | light | Standalone Skylark light palette — kept for back-compat; identical to the `tungsten-skylark` overlay |
+| `tungsten-matrix` | dual (dark+light) | Special edition — the Matrix film's green falling code: phosphor green `#00FF41` on near-black `#060D08`; light polarity is "paper construct": deep green `#0E6B2E` on paper `#F0F5EC` |
 
 Apply (repaints every surface within ~a second):
 
@@ -102,7 +102,33 @@ skin names.
 | ui_warn #E8C44A | 11.63:1 | 4.5 |
 | prompt #CFF5D3 | 16.52:1 | 4.5 |
 
-All 33 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
+`tungsten-skylark` light overlay (bg #F5F2EC):
+
+| Pair | Ratio | Threshold |
+|---|---|---|
+| banner_text #3C3F44 | 9.46:1 | 4.5 |
+| banner_title #9A5300 | 5.20:1 | 4.5 |
+| banner_accent #B26300 | 4.02:1 | 3.0 (large/decorative only) |
+| banner_dim #6B655B | 5.17:1 | 4.5 |
+| ui_ok #3F7226 | 5.15:1 | 4.5 |
+| ui_error #B23244 | 5.48:1 | 4.5 |
+| ui_warn #9A5300 | 5.20:1 | 4.5 |
+| prompt #3C3F44 | 9.46:1 | 4.5 |
+
+`tungsten-matrix` light overlay — "paper construct" (bg #F0F5EC):
+
+| Pair | Ratio | Threshold |
+|---|---|---|
+| banner_text #12351C | 12.23:1 | 4.5 |
+| banner_title #0E6B2E | 6.00:1 | 4.5 |
+| banner_accent #2E7D44 | 4.59:1 | 3.0 |
+| banner_dim #4A6B54 | 5.39:1 | 4.5 |
+| ui_ok #2E6B32 | 5.81:1 | 4.5 |
+| ui_error #B23244 | 5.53:1 | 4.5 |
+| ui_warn #7A6000 | 5.42:1 | 4.5 |
+| prompt #12351C | 12.23:1 | 4.5 |
+
+All 55 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
 
 ## Repo layout
 
@@ -125,8 +151,15 @@ All 33 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
   to `#9A5300` — **sanctioned by brand sign-off 2026-11** as THE
   `--ts-accent-text` value; `#B26300` is large-text-only (4.02:1); brand
   ambers stay decorative. Dark mode keeps `#FFB24D` (8.57:1).
-- Light/dark classification: `tungsten-skylark` = dark, `tungsten-skylark-light`
-  = light (also stated in each theme's `meta.json`).
+- Light/dark classification: `tungsten-skylark` and `tungsten-matrix` are dual
+  (dark base + `light_colors` overlay; each polarity audited to WCAG AA);
+  `tungsten-skylark-light` = light (also stated in each theme's `meta.json`).
+- Dual-mode behaviour: the CLI/TUI pick the overlay automatically on light
+  terminals (Skin Engine `light_colors`/`dark_colors` support). The Desktop
+  app's theme converter maps the light palette into its `colors` slot and the
+  dark into `darkColors`, so the Appearance light/dark toggle transitions
+  between the author's two palettes. Older Desktop builds pin one palette in
+  both slots — update to a build with dual-mode converter support.
 - Fleet adoption: ColourPicker / Timer / MarkdownEditor should consume
   `exports/ts-tokens.css` (per the same sign-off; YadaWallet precedent).
 - Tungsten Matrix is a film-homage special edition, dark-first. Its palette

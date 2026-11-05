@@ -78,3 +78,49 @@ ui_error = ["ui_error", "terminal", "text"]
 ui_warn = ["ui_warn", "terminal", "text"]
 prompt = ["prompt", "terminal", "text"]
 session_label = ["session_label", "terminal", "text"]
+
+# ── Light polarity overlay ────────────────────────────────────────────────
+# "Paper construct": the white loading program. Deep matrix greens on
+# green-tinted paper — the dark theme as a phosphor CRT printout.
+# Accent #0E6B2E = the documented hypothetical light accent, now real.
+[light.backgrounds]
+terminal = "#F0F5EC"
+status = "#F7FAF4"
+completion = "#E6EEE5"
+
+[light.colors]
+banner_border = "#86A38E"
+banner_title = "#0E6B2E"
+banner_accent = "#2E7D44"
+banner_dim = "#4A6B54"
+banner_text = "#12351C"
+ui_accent = "#0E6B2E"
+ui_label = "#2E7D44"
+ui_ok = "#2E6B32"
+ui_error = "#B23244"
+ui_warn = "#7A6000"
+prompt = "#12351C"
+input_rule = "#86A38E"
+response_border = "#0E6B2E"
+session_label = "#0E6B2E"
+session_border = "#5E7A66"
+status_bar_bg = "#F7FAF4"
+voice_status_bg = "#F7FAF4"
+selection_bg = "#BFE8C6"
+completion_menu_bg = "#E6EEE5"
+completion_menu_current_bg = "#CBEBD2"
+completion_menu_meta_bg = "#E6EEE5"
+completion_menu_meta_current_bg = "#CBEBD2"
+
+[light.contrast]
+banner_text = ["banner_text", "terminal", "text"]
+banner_title = ["banner_title", "terminal", "text"]
+banner_accent = ["banner_accent", "terminal", "accent"]
+banner_dim = ["banner_dim", "terminal", "text"]
+ui_accent = ["ui_accent", "terminal", "text"]
+ui_label = ["ui_label", "terminal", "text"]
+ui_ok = ["ui_ok", "terminal", "text"]
+ui_error = ["ui_error", "terminal", "text"]
+ui_warn = ["ui_warn", "terminal", "text"]
+prompt = ["prompt", "terminal", "text"]
+session_label = ["session_label", "terminal", "text"]

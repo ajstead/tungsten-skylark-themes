@@ -1,1 +1,6 @@
-{"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json", "name": "tungsten-skylark-themes", "version": "0.2.0", "description": "TungstenSkylark brand themes for Hermes surfaces (CLI/TUI/Desktop) plus portable W3C DTCG colour tokens for other apps"}
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tungsten-skylark-themes",
+  "version": "0.3.0",
+  "description": "TungstenSkylark brand themes for Hermes surfaces (CLI/TUI/Desktop) plus portable W3C DTCG colour tokens for other apps"
+}
