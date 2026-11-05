@@ -72,6 +72,26 @@ def wcag_safe_text_accent(palette: dict) -> str | None:
     return best[1] if best else None
 
 
+def hex_mix(a_hex: str, b_hex: str, p: float) -> str:
+    """Linear mix: p of b_hex over a_hex."""
+    def parse(h: str) -> tuple[int, int, int]:
+        h = h.lstrip("#")
+        return int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+    r1, g1, b1 = parse(a_hex)
+    r2, g2, b2 = parse(b_hex)
+    return "#{:02X}{:02X}{:02X}".format(
+        round(r1 + (r2 - r1) * p), round(g1 + (g2 - g1) * p), round(b1 + (b2 - b1) * p))
+
+
+def semantic_color(anchor_tid: str, mode: str, tokens: dict, bg: str) -> str:
+    """AA-blended meadow/rose/ember anchor accent for ok/error/warn on bg."""
+    anchor = val(tokens["ts"]["color"]["theme"][anchor_tid][mode]["accent"])
+    if ratio(anchor, bg) >= TEXT_MIN:
+        return anchor
+    blended = wcag_safe_text_accent({"accent": anchor, "bg": bg})
+    return blended or anchor
+
+
 def flat(mode_palette: dict) -> dict:
     """DTCG group {role: {$value}} -> {role: hex}."""
     return {role: val(node) for role, node in mode_palette.items()
@@ -196,9 +216,39 @@ def main() -> int:
         lines.append(f"    --ts-accent-text-l: {light_val};   /* on {l['bg']}: {ratio(light_val, l['bg']):.2f}:1 */")
         lines.append(f"    --ts-accent-text-d: {dark_val};   /* on {d['bg']}: {ratio(dark_val, d['bg']):.2f}:1 */")
         lines.append("}")
+
+    # semantic roles (ok/error/warn/selection) — derived per tokens.json
+    # $extensions.com.tungstenskylark.derivedRecipes: hue-anchored to the
+    # meadow/rose/ember accents per mode, AA-blended (>=4.5:1) per bg;
+    # selection = accentSoft 40% over bg.
     lines += [
-        ":root { --ts-accent-text: var(--ts-accent-text-l); }",
-        "html[data-appearance='dark'] { --ts-accent-text: var(--ts-accent-text-d); }",
+        "",
+        "/* Semantic roles: derived, AA-audited (recipes in tokens.json $extensions).",
+        "   ok/error/warn are hue-anchored to meadow/rose/ember accents per mode,",
+        "   blended to >=4.5:1 on the theme bg; selection = accentSoft 40% over bg. */",
+    ]
+    for tid in theme_ids:
+        th = tokens["ts"]["color"]["theme"][tid]
+        l, d = flat(th["light"]), flat(th["dark"])
+        lines.append(f"[data-theme='{tid}'] {{")
+        for role, anchor in (("ok", "meadow"), ("error", "rose"), ("warn", "ember")):
+            lv = semantic_color(anchor, "light", tokens, l["bg"])
+            dv = semantic_color(anchor, "dark", tokens, d["bg"])
+            lines.append(f"    --ts-{role}-l: {lv};   /* on {l['bg']}: {ratio(lv, l['bg']):.2f}:1 */")
+            lines.append(f"    --ts-{role}-d: {dv};   /* on {d['bg']}: {ratio(dv, d['bg']):.2f}:1 */")
+        lsel, dsel = hex_mix(l["bg"], l["accentSoft"], 0.4), hex_mix(d["bg"], d["accentSoft"], 0.4)
+        lines.append(f"    --ts-selection-l: {lsel};")
+        lines.append(f"    --ts-selection-d: {dsel};")
+        lines.append("}")
+    lines += [
+        ":root {",
+        "    --ts-accent-text: var(--ts-accent-text-l);",
+        *[f"    --ts-{role}: var(--ts-{role}-l);" for role in ("ok", "error", "warn", "selection")],
+        "}",
+        "html[data-appearance='dark'] {",
+        "    --ts-accent-text: var(--ts-accent-text-d);",
+        *[f"    --ts-{role}: var(--ts-{role}-d);" for role in ("ok", "error", "warn", "selection")],
+        "}",
         "",
     ]
 
