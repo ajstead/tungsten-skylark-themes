@@ -1,10 +1,10 @@
-# Tungsten Phosphor — special edition, DARK terminal palette.
+# Tungsten Phosphor — permanent collection theme, DARK terminal palette.
 # Retro green-phosphor CRT: the classic P1 terminal glow on near-black.
 # Roles: bg #060D08 · surface #0E1A10 · text #CFF5D3 · accent #00FF41 · accent-soft #5CFF86
 
 # GUI accents for the Desktop app (ignored by CLI/TUI)
 customCSS = """
-/* Tungsten Phosphor — special edition */
+/* Tungsten Phosphor — permanent collection theme */
 ::selection { background: rgba(0, 255, 65, 0.25); }
 ::-webkit-scrollbar-thumb { background: #1E3A26; border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: #00FF41; }

@@ -90,7 +90,7 @@
     --th-ink-l: #FFFFFF;       --th-ink-d: #2F2F2E;
 }
 [data-theme='phosphor'] {
-    /* 10 · Tungsten Phosphor — special edition: retro green-phosphor CRT terminal. Dark-first; light variant is the paper printout. */
+    /* 10 · Tungsten Phosphor — retro green-phosphor CRT terminal, permanent collection member. Dark-first; light variant is the paper printout. */
     --th-bg-l: #EEF4EE;        --th-bg-d: #060D08;
     --th-surface-l: #F8FCF8;   --th-surface-d: #0E1A10;
     --th-text-l: #1B2A1E;      --th-text-d: #CFF5D3;

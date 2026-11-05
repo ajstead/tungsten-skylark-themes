@@ -14,7 +14,7 @@ Reference-only; nothing in this repo writes into the brand material.
 |---|---|---|
 | `tungsten-skylark` | dual (dark+light) | Skylark brand base — amber `#FFB24D` on tungsten `#232529`, text `#F5F2EC`; ships a `light_colors` overlay (cream `#F5F2EC`, amber `#9A5300`) |
 | `tungsten-skylark-light` | light | Standalone Skylark light palette — kept for back-compat; identical to the `tungsten-skylark` overlay |
-| `tungsten-phosphor` | dual (dark+light) | Special edition — retro green-phosphor CRT: phosphor green `#00FF41` on near-black `#060D08`; light polarity is "paper printout": deep green `#0E6B2E` on paper `#F0F5EC` |
+| `tungsten-phosphor` | dual (dark+light) | Retro green-phosphor CRT: phosphor green `#00FF41` on near-black `#060D08`; light polarity is "paper printout": deep green `#0E6B2E` on paper `#F0F5EC` |
 
 Apply (repaints every surface within ~a second):
 
@@ -162,8 +162,8 @@ All 55 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
   both slots — update to a build with dual-mode converter support.
 - Fleet adoption: ColourPicker / Timer / MarkdownEditor should consume
   `exports/ts-tokens.css` (per the same sign-off; YadaWallet precedent).
-- Tungsten Phosphor is a retro-CRT special edition, dark-first (renamed from
+- Tungsten Phosphor is a retro-CRT permanent collection theme, dark-first (renamed from
   `tungsten-matrix` in v0.4.0 — breaking change). Its palette (phosphor green
-  `#00FF41`, near-black `#060D08`) is NOT part of the nine brand themes — it
-  travels in tokens.json under its own `phosphor` theme id, and both its
+  `#00FF41`, near-black `#060D08`) travels in tokens.json under its own `phosphor`
+  theme id alongside the nine founding brand themes, and both its
   accents pass AA as text on their backgrounds.

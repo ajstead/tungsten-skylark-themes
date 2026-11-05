@@ -1,5 +1,5 @@
 name: tungsten-phosphor
-description: Tungsten Phosphor — retro green-phosphor CRT (special edition, dark+light)
+description: Tungsten Phosphor — retro green-phosphor CRT (dark+light)
 colors:
   banner_border: '#1E3A26'
   banner_title: '#00FF41'
@@ -55,7 +55,7 @@ tool_prefix: ❘
 banner_logo: '[bold #00FF41]TUNGSTEN[/] [bold #5CFF86]PHOSPHOR[/]
 
   '
-customCSS: '/* Tungsten Phosphor — special edition */
+customCSS: '/* Tungsten Phosphor — permanent collection theme */
 
   ::selection { background: rgba(0, 255, 65, 0.25); }
 
