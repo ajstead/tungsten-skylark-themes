@@ -89,8 +89,8 @@
     --th-accent-soft-l: #9A9DA3;--th-accent-soft-d: #D6D8DC;
     --th-ink-l: #FFFFFF;       --th-ink-d: #2F2F2E;
 }
-[data-theme='matrix'] {
-    /* 10 · Tungsten Matrix — special edition: the green falling code (Matrix film homage). Dark-first; light variant is the day-side construct. */
+[data-theme='phosphor'] {
+    /* 10 · Tungsten Phosphor — special edition: retro green-phosphor CRT terminal. Dark-first; light variant is the paper printout. */
     --th-bg-l: #EEF4EE;        --th-bg-d: #060D08;
     --th-surface-l: #F8FCF8;   --th-surface-d: #0E1A10;
     --th-text-l: #1B2A1E;      --th-text-d: #CFF5D3;
@@ -197,7 +197,7 @@ html[data-appearance='dark'],
     --ts-accent-text-l: #6B6E75;   /* on #F4F4F3: 4.64:1 */
     --ts-accent-text-d: #B5B8BE;   /* on #1D1E20: 8.39:1 */
 }
-[data-theme='matrix'] {
+[data-theme='phosphor'] {
     --ts-accent-text-l: #0E6B2E;   /* on #EEF4EE: 5.95:1 */
     --ts-accent-text-d: #00FF41;   /* on #060D08: 14.39:1 */
 }

@@ -14,7 +14,7 @@ Reference-only; nothing in this repo writes into the brand material.
 |---|---|---|
 | `tungsten-skylark` | dual (dark+light) | Skylark brand base — amber `#FFB24D` on tungsten `#232529`, text `#F5F2EC`; ships a `light_colors` overlay (cream `#F5F2EC`, amber `#9A5300`) |
 | `tungsten-skylark-light` | light | Standalone Skylark light palette — kept for back-compat; identical to the `tungsten-skylark` overlay |
-| `tungsten-matrix` | dual (dark+light) | Special edition — the Matrix film's green falling code: phosphor green `#00FF41` on near-black `#060D08`; light polarity is "paper construct": deep green `#0E6B2E` on paper `#F0F5EC` |
+| `tungsten-phosphor` | dual (dark+light) | Special edition — retro green-phosphor CRT: phosphor green `#00FF41` on near-black `#060D08`; light polarity is "paper printout": deep green `#0E6B2E` on paper `#F0F5EC` |
 
 Apply (repaints every surface within ~a second):
 
@@ -48,7 +48,7 @@ skin names.
 
 - **`themes/tokens.json`** — machine-readable token set in the **W3C Design
   Tokens Community Group (DTCG) format** (`$value`/`$type` groups): ten themes
-  (nine brand + Tungsten Matrix) × light/dark, six roles + derived
+  (nine brand + Tungsten Phosphor) × light/dark, six roles + derived
   `accentText`, typography stacks, 8px spacing rhythm, radius/content-max.
   Consumable by Style Dictionary, Tokens Studio and any DTCG-aware tooling.
 - **`exports/ts-tokens.css`** — drop-in CSS custom properties for web/Electron
@@ -89,7 +89,7 @@ skin names.
 | ui_warn #9A5300 | 5.20:1 | 4.5 |
 | prompt #3C3F44 | 9.46:1 | 4.5 |
 
-`tungsten-matrix` (dark, bg #060D08):
+`tungsten-phosphor` (dark, bg #060D08):
 
 | Pair | Ratio | Threshold |
 |---|---|---|
@@ -115,7 +115,7 @@ skin names.
 | ui_warn #9A5300 | 5.20:1 | 4.5 |
 | prompt #3C3F44 | 9.46:1 | 4.5 |
 
-`tungsten-matrix` light overlay — "paper construct" (bg #F0F5EC):
+`tungsten-phosphor` light overlay — "paper printout" (bg #F0F5EC):
 
 | Pair | Ratio | Threshold |
 |---|---|---|
@@ -151,7 +151,7 @@ All 55 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
   to `#9A5300` — **sanctioned by brand sign-off 2026-11** as THE
   `--ts-accent-text` value; `#B26300` is large-text-only (4.02:1); brand
   ambers stay decorative. Dark mode keeps `#FFB24D` (8.57:1).
-- Light/dark classification: `tungsten-skylark` and `tungsten-matrix` are dual
+- Light/dark classification: `tungsten-skylark` and `tungsten-phosphor` are dual
   (dark base + `light_colors` overlay; each polarity audited to WCAG AA);
   `tungsten-skylark-light` = light (also stated in each theme's `meta.json`).
 - Dual-mode behaviour: the CLI/TUI pick the overlay automatically on light
@@ -162,7 +162,8 @@ All 55 declared pairs pass; re-run `python3 tools/build.py` to re-verify.
   both slots — update to a build with dual-mode converter support.
 - Fleet adoption: ColourPicker / Timer / MarkdownEditor should consume
   `exports/ts-tokens.css` (per the same sign-off; YadaWallet precedent).
-- Tungsten Matrix is a film-homage special edition, dark-first. Its palette
-  (phosphor green `#00FF41`, near-black `#060D08`) is NOT part of the nine
-  brand themes — it travels in tokens.json under its own `matrix` theme id,
-  and both its accents pass AA as text on their backgrounds.
+- Tungsten Phosphor is a retro-CRT special edition, dark-first (renamed from
+  `tungsten-matrix` in v0.4.0 — breaking change). Its palette (phosphor green
+  `#00FF41`, near-black `#060D08`) is NOT part of the nine brand themes — it
+  travels in tokens.json under its own `phosphor` theme id, and both its
+  accents pass AA as text on their backgrounds.
