@@ -125,7 +125,7 @@ def main() -> int:
         "    --ts-text: var(--th-text-l);",
         "    --ts-accent: var(--th-accent-l);",
         "    --ts-accent-soft: var(--th-accent-soft-l);",
-        "    --ts-accent-ink: var(--th-ink-l);",
+        "    --ts-ink: var(--th-ink-l);",
         "",
         "    --ts-text-soft: color-mix(in srgb, var(--ts-text) 62%, transparent);",
         "    --ts-line: color-mix(in srgb, var(--ts-text) 16%, transparent);",
@@ -168,7 +168,7 @@ def main() -> int:
         "    html:not([data-appearance]) {",
         "        color-scheme: dark;",
     ]
-    lines += [f"        {ln.strip()};" for ln in role_assign("dark")]
+    lines += [f"        {ln.strip().rstrip(';')};" for ln in role_assign("dark")]
     lines += ["    }", "}", ""]
 
     # WCAG-safe text accents per theme

@@ -107,7 +107,7 @@
     --ts-text: var(--th-text-l);
     --ts-accent: var(--th-accent-l);
     --ts-accent-soft: var(--th-accent-soft-l);
-    --ts-accent-ink: var(--th-ink-l);
+    --ts-ink: var(--th-ink-l);
 
     --ts-text-soft: color-mix(in srgb, var(--ts-text) 62%, transparent);
     --ts-line: color-mix(in srgb, var(--ts-text) 16%, transparent);
@@ -147,12 +147,12 @@ html[data-appearance='dark'],
     html[data-appearance='auto'],
     html:not([data-appearance]) {
         color-scheme: dark;
-        --ts-bg: var(--th-bg-d);;
-        --ts-surface: var(--th-surface-d);;
-        --ts-text: var(--th-text-d);;
-        --ts-accent: var(--th-accent-d);;
-        --ts-accent-soft: var(--th-accent-soft-d);;
-        --ts-ink: var(--th-ink-d);;
+        --ts-bg: var(--th-bg-d);
+        --ts-surface: var(--th-surface-d);
+        --ts-text: var(--th-text-d);
+        --ts-accent: var(--th-accent-d);
+        --ts-accent-soft: var(--th-accent-soft-d);
+        --ts-ink: var(--th-ink-d);
     }
 }
 
