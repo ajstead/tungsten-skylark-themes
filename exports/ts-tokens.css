@@ -98,6 +98,15 @@
     --th-accent-soft-l: #35A85C;--th-accent-soft-d: #5CFF86;
     --th-ink-l: #FFFFFF;       --th-ink-d: #04120A;
 }
+[data-theme='brassworks'] {
+    /* 11 · Tungsten Brassworks — steampunk riff: copper gaslight on aged iron. Eleventh collection member; the only copper/parchment voice in the set. */
+    --th-bg-l: #F0E7D0;        --th-bg-d: #1A130D;
+    --th-surface-l: #FAF3E3;   --th-surface-d: #2A1F15;
+    --th-text-l: #33261A;      --th-text-d: #EFE2C8;
+    --th-accent-l: #A0521C;    --th-accent-d: #E08A3C;
+    --th-accent-soft-l: #C48A55;--th-accent-soft-d: #8A5A2B;
+    --th-ink-l: #FAF3E3;       --th-ink-d: #1A130D;
+}
 
 /* ---------- working roles (light by default) + derived ---------- */
 :root {
@@ -200,6 +209,10 @@ html[data-appearance='dark'],
 [data-theme='phosphor'] {
     --ts-accent-text-l: #0E6B2E;   /* on #EEF4EE: 5.95:1 */
     --ts-accent-text-d: #00FF41;   /* on #060D08: 14.39:1 */
+}
+[data-theme='brassworks'] {
+    --ts-accent-text-l: #A0521C;   /* on #F0E7D0: 4.58:1 */
+    --ts-accent-text-d: #E08A3C;   /* on #1A130D: 6.89:1 */
 }
 
 /* Semantic roles: derived, AA-audited (recipes in tokens.json $extensions).
@@ -304,6 +317,16 @@ html[data-appearance='dark'],
     --ts-warn-d: #FF7A4E;   /* on #060D08: 7.62:1 */
     --ts-selection-l: #A4D6B4;
     --ts-selection-d: #286E3A;
+}
+[data-theme='brassworks'] {
+    --ts-ok-l: #406D27;   /* on #F0E7D0: 4.96:1 */
+    --ts-ok-d: #76BE51;   /* on #1A130D: 8.10:1 */
+    --ts-error-l: #AD3C4B;   /* on #F0E7D0: 4.84:1 */
+    --ts-error-d: #E86577;   /* on #1A130D: 5.74:1 */
+    --ts-warn-l: #AB4022;   /* on #F0E7D0: 4.89:1 */
+    --ts-warn-d: #FF7A4E;   /* on #1A130D: 7.13:1 */
+    --ts-selection-l: #DEC29F;
+    --ts-selection-d: #472F19;
 }
 :root {
     --ts-accent-text: var(--ts-accent-text-l);

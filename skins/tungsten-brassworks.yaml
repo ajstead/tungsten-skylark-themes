@@ -1,0 +1,91 @@
+name: tungsten-brassworks
+description: Tungsten Brassworks — steampunk copper gaslight (dark+light)
+colors:
+  banner_border: '#3C342B'
+  banner_title: '#E08A3C'
+  banner_accent: '#C48A55'
+  banner_dim: '#A39885'
+  banner_text: '#EFE2C8'
+  ui_accent: '#E08A3C'
+  ui_label: '#C48A55'
+  ui_ok: '#76BE51'
+  ui_error: '#E86577'
+  ui_warn: '#FF7A4E'
+  prompt: '#EFE2C8'
+  input_rule: '#3C342B'
+  response_border: '#E08A3C'
+  session_label: '#C48A55'
+  session_border: '#696052'
+  status_bar_bg: '#211910'
+  voice_status_bg: '#211910'
+  selection_bg: '#472F19'
+  completion_menu_bg: '#2A1F15'
+  completion_menu_current_bg: '#3B2F1F'
+  completion_menu_meta_bg: '#2A1F15'
+  completion_menu_meta_current_bg: '#3B2F1F'
+spinner:
+  waiting_faces:
+  - (—)
+  - (●)
+  - (—)
+  thinking_faces:
+  - (—)
+  - (●)
+  - '{0}'
+  thinking_verbs:
+  - stoking the boiler
+  - polishing the brass
+  - raising pressure
+  - winding the mainspring
+  - charting the aether
+  wings:
+  - - «
+    - »
+  - - ‹
+    - ›
+branding:
+  agent_name: Tungsten Brassworks
+  welcome: All aboard the brass sky. The workshop is lit — type your message or /help
+    for commands.
+  goodbye: Pressure released. The lamps go down. ⚙
+  response_label: ⚙ Workshop
+  prompt_symbol: ⚙
+  help_header: (⚙) Available Commands
+tool_prefix: ❘
+banner_logo: '[bold #E08A3C]TUNGSTEN[/] [bold #C48A55]BRASSWORKS[/]
+
+  '
+customCSS: '/* Tungsten Brassworks — permanent collection theme */
+
+  ::selection { background: rgba(224, 138, 60, 0.25); }
+
+  ::-webkit-scrollbar-thumb { background: #3C342B; border-radius: 6px; }
+
+  ::-webkit-scrollbar-thumb:hover { background: #E08A3C; }
+
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  '
+light_colors:
+  banner_border: '#D2C8B3'
+  banner_title: '#A0521C'
+  banner_accent: '#834317'
+  banner_dim: '#6A5F4F'
+  banner_text: '#33261A'
+  ui_accent: '#A0521C'
+  ui_label: '#834317'
+  ui_ok: '#45742A'
+  ui_error: '#B53F4E'
+  ui_warn: '#B34423'
+  prompt: '#33261A'
+  input_rule: '#D2C8B3'
+  response_border: '#A0521C'
+  session_label: '#834317'
+  session_border: '#A29785'
+  status_bar_bg: '#F5EDDC'
+  voice_status_bg: '#F5EDDC'
+  selection_bg: '#DEC29F'
+  completion_menu_bg: '#FAF3E3'
+  completion_menu_current_bg: '#EBDFC5'
+  completion_menu_meta_bg: '#FAF3E3'
+  completion_menu_meta_current_bg: '#EBDFC5'

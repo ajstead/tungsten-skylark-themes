@@ -15,6 +15,7 @@ Reference-only; nothing in this repo writes into the brand material.
 | `tungsten-skylark` | dual (dark+light) | Skylark brand base — amber `#FFB24D` on tungsten `#232529`, text `#F5F2EC`; ships a `light_colors` overlay (cream `#F5F2EC`, amber `#9A5300`) |
 | `tungsten-skylark-light` | light | Standalone Skylark light palette — kept for back-compat; identical to the `tungsten-skylark` overlay |
 | `tungsten-phosphor` | dual (dark+light) | Retro green-phosphor CRT: phosphor green `#00FF41` on near-black `#060D08`; light polarity is "paper printout": deep green `#0E6B2E` on paper `#F0F5EC` |
+| `tungsten-brassworks` | dual (dark+light) | Steampunk eleventh theme: gaslight copper `#E08A3C` on oiled iron `#1A130D`; light polarity is "parchment & copper": oxidised copper `#A0521C` on aged parchment `#F0E7D0` |
 
 Apply (repaints every surface within ~a second):
 
@@ -47,8 +48,8 @@ skin names.
 ## Using the theme in OTHER apps
 
 - **`themes/tokens.json`** — machine-readable token set in the **W3C Design
-  Tokens Community Group (DTCG) format** (`$value`/`$type` groups): ten themes
-  (nine brand + Tungsten Phosphor) × light/dark, six roles + derived
+  Tokens Community Group (DTCG) format** (`$value`/`$type` groups): eleven themes
+  (nine brand + Tungsten Phosphor + Tungsten Brassworks) × light/dark, six roles + derived
   `accentText`, typography stacks, 8px spacing rhythm, radius/content-max.
   Consumable by Style Dictionary, Tokens Studio and any DTCG-aware tooling.
 - **`exports/ts-tokens.css`** — drop-in CSS custom properties for web/Electron
